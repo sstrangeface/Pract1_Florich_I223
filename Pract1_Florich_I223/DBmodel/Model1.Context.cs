@@ -13,10 +13,10 @@ namespace Pract1_Florich_I223.DBmodel
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class ShopDBEntities : DbContext
+    public partial class ShopDBEntities2 : DbContext
     {
-        public ShopDBEntities()
-            : base("name=ShopDBEntities")
+        public ShopDBEntities2()
+            : base("name=ShopDBEntities2")
         {
         }
     
