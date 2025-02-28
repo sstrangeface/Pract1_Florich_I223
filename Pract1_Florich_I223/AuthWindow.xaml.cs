@@ -25,7 +25,7 @@ namespace Pract1_Florich_I223
         {
             InitializeComponent();
             _authService = new AuthService();
-            ShopDBEntities dbContext = new ShopDBEntities();
+            ShopDBEntities2 dbContext = new ShopDBEntities2();
         }
 
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
