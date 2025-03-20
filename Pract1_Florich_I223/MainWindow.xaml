@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Pract1_Florich_I223"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid Background="#FF708BF9">
+        Title="MainWindow" Height="800" Width="500">
+    <Grid Background="#FFEAABA8">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="27*"/>
             <ColumnDefinition Width="146*"/>
@@ -16,37 +16,28 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <Button Grid.Column="1" Grid.Row="0" Click="Button_Click" x:Name="btn1" Content="Авторизация" FontFamily="Verdana" FontSize="20" FontStyle="Italic" FontWeight="Bold" Margin="10,17,334,33" Height="95" Foreground="White" BorderBrush="#FF0800FF">
+        <Button Grid.Column="1" Click="AddProductButton_Click" x:Name="AddProductButton" Content="Добавить продукт" FontFamily="Verdana" FontSize="20" FontStyle="Italic" FontWeight="Bold" Margin="10,38,10,38" Height="55" Foreground="Black" BorderBrush="#FF5F0202" Grid.Row="5">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="#FF4A07E2" Offset="0.783"/>
+                    <GradientStop Color="#FFFF5050" Offset="0.783"/>
                     <GradientStop Color="#FF7D44FF"/>
                     <GradientStop Color="#FF00CAFF"/>
-                    <GradientStop Color="#FF1A1CC7" Offset="0.54"/>
-                    <GradientStop Color="#FF95E4FF"/>
+                    <GradientStop Color="#FFC54141" Offset="0.54"/>
+                    <GradientStop Color="#FFFFCBC2"/>
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
 
-        <Button Grid.Column="1" Click="AddProductButton_Click" x:Name="AddProductButton" Content="Добавить продукт" FontFamily="Verdana" FontSize="20" FontStyle="Italic" FontWeight="Bold" Margin="334,17,10,33" Height="95" Foreground="White" BorderBrush="#FF0800FF">
-            <Button.Background>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="#FF4A07E2" Offset="0.783"/>
-                    <GradientStop Color="#FF7D44FF"/>
-                    <GradientStop Color="#FF00CAFF"/>
-                    <GradientStop Color="#FF1A1CC7" Offset="0.54"/>
-                    <GradientStop Color="#FF95E4FF"/>
-                </LinearGradientBrush>
-            </Button.Background>
-        </Button>
+        <TextBox x:Name="ProductNameTextBox" Margin="10,38,10,38" Text="" Grid.Column="1" Grid.Row="1" FontFamily="Verdana" FontSize="20" Height="55"/>
+        <TextBox x:Name="ProductPriceTextBox" Margin="10,38,10,37" Text="" Grid.Column="1" Grid.Row="2" FontFamily="Verdana" FontSize="20" Height="55"/>
+        <TextBox x:Name="ProductDescriptionTextBox" Margin="10,38,10,38" Text="" Grid.Column="1" Grid.Row="3" FontFamily="Verdana" FontSize="20" Height="55"/>
 
-        <TextBox x:Name="ProductNameTextBox" Margin="10,10,10,79" Text="" Grid.Column="1" Grid.Row="1" FontFamily="Verdana" FontSize="20" Height="55"/>
-        <TextBox x:Name="ProductPriceTextBox" Margin="10,79,10,10" Text="" Grid.Column="1" Grid.Row="1" FontFamily="Verdana" FontSize="20" Height="55"/>
-        <TextBox x:Name="ProductDescriptionTextBox" Margin="10,148,10,10" Text="" Grid.Column="1" Grid.Row="1" FontFamily="Verdana" FontSize="20" Height="55"/>
-
-        <ListBox x:Name="ProductsDataGrid" Margin="10,10,10,10" Grid.Column="1" Grid.Row="2" FontFamily="Verdana" FontSize="16" Background="#FFF1F1F1">
+        <ListBox x:Name="ProductsDataGrid" Margin="10,10,10,10" Grid.Column="1" Grid.Row="4" FontFamily="Verdana" FontSize="16" Background="#FFF1F1F1">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
@@ -57,5 +48,6 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
+        <TextBlock Grid.Column="1" Width="344" FontSize="27" FontStyle="Italic" TextAlignment="Center" FontWeight="Bold" TextWrapping="Wrap" FontFamily="Verdana" Margin="10,35,10,30"><Run FontWeight="Bold" Language="ru-ru" Text="ФОРМА ДОБАВЛЕНИЯ ЗАПИСЕЙ"/></TextBlock>
     </Grid>
 </Window>

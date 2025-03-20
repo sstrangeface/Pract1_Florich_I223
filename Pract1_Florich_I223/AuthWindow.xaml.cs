@@ -40,10 +40,16 @@ namespace Pract1_Florich_I223
 
             MessageBox.Show(login, pass);
 
-            if (_authService.CheckData(login,pass))
+            if (_authService.CheckData(login, pass))
             {
-                MainWindow mainWindow = new MainWindow();
-                mainWindow.Show();
+                // Создаем экземпляр окна DataGrid
+                DataGrid dataGridWindow = new DataGrid();
+
+                // Открываем окно DataGrid
+                dataGridWindow.Show();
+
+                // Закрываем текущее окно AuthWindow
+                this.Close();
             }
             else
             {

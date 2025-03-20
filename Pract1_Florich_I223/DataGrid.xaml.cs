@@ -24,14 +24,24 @@ namespace Pract1_Florich_I223
             InitializeComponent();
         }
 
+        private void AddButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Создаем экземпляр MainWindow
+            MainWindow mainWindow = new MainWindow();
+
+            // Открываем MainWindow
+            mainWindow.Show();
+
+            // Закрываем текущее окно DataGrid
+            this.Close();
+        }
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-
         }
     }
 }
