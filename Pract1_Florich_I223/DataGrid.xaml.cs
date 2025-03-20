@@ -1,47 +1,57 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using Pract1_Florich_I223.DBmodel;
 
 namespace Pract1_Florich_I223
 {
-    /// <summary>
-    /// Логика взаимодействия для DataGrid.xaml
-    /// </summary>
     public partial class DataGrid : Window
     {
+        // Контекст базы данных
+        private ShopDBEntities3 _dbContext;
+
         public DataGrid()
         {
             InitializeComponent();
+
+            // Инициализация контекста базы данных
+            _dbContext = new ShopDBEntities3();
+
+            // Загрузка данных из таблицы Products
+            LoadProducts();
         }
 
+        // Метод для загрузки данных из таблицы Products
+        private void LoadProducts()
+        {
+            try
+            {
+                // Получаем данные из таблицы Products
+                var products = _dbContext.Products.ToList();
+
+                // Привязываем данные к DataGrid
+                ProductsDataGrid.ItemsSource = products;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка при загрузке данных: {ex.Message}");
+            }
+        }
+
+        // Обработчик кнопки ДОБАВИТЬ
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            // Создаем экземпляр MainWindow
             MainWindow mainWindow = new MainWindow();
-
-            // Открываем MainWindow
             mainWindow.Show();
-
-            // Закрываем текущее окно DataGrid
             this.Close();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        // Обработчик кнопки УДАЛИТЬ
+        private void DelButton_Click(object sender, RoutedEventArgs e)
         {
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
+            DelWindow delWindow = new DelWindow();
+            delWindow.Show();
+            this.Close();
         }
     }
 }

@@ -12,11 +12,11 @@ namespace Pract1_Florich_I223.Logic
     public class AuthService : IAuthService
     {
         private List<User> _users;
-        private ShopDBEntities2 dbContext; // Делаем dbContext полем класса
+        private ShopDBEntities3 dbContext; // Делаем dbContext полем класса
 
         public AuthService()
         {
-            dbContext = new ShopDBEntities2(); // Инициализируем dbContext в конструкторе
+            dbContext = new ShopDBEntities3(); // Инициализируем dbContext в конструкторе
         }
 
         public bool CheckData(string login, string pass)

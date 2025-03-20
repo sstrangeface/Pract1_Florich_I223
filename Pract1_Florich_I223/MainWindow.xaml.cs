@@ -9,12 +9,12 @@ namespace Pract1_Florich_I223
 {
     public partial class MainWindow : Window
     {
-        private ShopDBEntities2 dbContext;
+        private ShopDBEntities3 dbContext;
 
         public MainWindow()
         {
             InitializeComponent();
-            dbContext = new ShopDBEntities2();
+            dbContext = new ShopDBEntities3();
             LoadProducts();
         }
 
@@ -61,6 +61,18 @@ namespace Pract1_Florich_I223
             {
                 MessageBox.Show($"Ошибка при добавлении товара: {ex.Message}");
             }
+        }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Создаем экземпляр окна DataGrid
+                DataGrid dataGridWindow = new DataGrid();
+
+                // Открываем окно DataGrid
+                dataGridWindow.Show();
+
+                // Закрываем текущее окно AuthWindow
+                this.Close();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
