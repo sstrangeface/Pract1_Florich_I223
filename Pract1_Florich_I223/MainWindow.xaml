@@ -48,7 +48,6 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <TextBlock Grid.Column="1" FontSize="25" FontStyle="Italic" TextAlignment="Center" FontWeight="Bold" TextWrapping="Wrap" FontFamily="Verdana" Margin="0,35,2,30"><Run FontWeight="Bold" Language="ru-ru" Text="ФОРМА ДОБАВЛЕНИЯ ЗАПИСЕЙ"/></TextBlock>
         <Button Grid.Column="1" Click="BackButton_Click" x:Name="BackButton" Content="&lt;" FontFamily="Verdana" FontSize="15" FontStyle="Italic" FontWeight="Bold" Margin="0,31,302,31" Foreground="Black" BorderBrush="#FF5F0202" Grid.Row="5">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -60,5 +59,7 @@
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
+        <TextBlock Grid.Column="1" FontSize="26" FontWeight="Bold" 
+            HorizontalAlignment="Center" VerticalAlignment="Center" Height="111" Width="361" TextAlignment="Center"><Run Text="ФОРМА "/><LineBreak/><Run Text="ДОБА"/><Run Text="ВЛЕНИЯ "/><LineBreak/><Run Text="ЗАПИСЕЙ"/></TextBlock>
     </Grid>
 </Window>

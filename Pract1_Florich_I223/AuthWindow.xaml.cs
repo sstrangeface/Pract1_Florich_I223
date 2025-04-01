@@ -25,7 +25,7 @@ namespace Pract1_Florich_I223
         {
             InitializeComponent();
             _authService = new AuthService();
-            ShopDBEntities3  dbContext = new ShopDBEntities3();
+            ShopDBEntities5  dbContext = new ShopDBEntities5();
         }
 
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
@@ -37,9 +37,7 @@ namespace Pract1_Florich_I223
         {
             string login = tbxlogin.Text;
             string pass = tbxPass.Text;
-
-            MessageBox.Show(login, pass);
-
+                        
             if (_authService.CheckData(login, pass))
             {
                 // Создаем экземпляр окна DataGrid

@@ -8,41 +8,45 @@
         Title="AuthWindow" Height="800" Width="500">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="41*">
-
-            </ColumnDefinition>
-            <ColumnDefinition Width="409*">
-
-            </ColumnDefinition>
-            <ColumnDefinition Width="50*">
-
-            </ColumnDefinition>
+            <ColumnDefinition Width="41*"/>
+            <ColumnDefinition Width="409*"/>
+            <ColumnDefinition Width="50*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="245*"/>
             <RowDefinition Height="62*"/>
             <RowDefinition Height="118*"/>
-            <RowDefinition Height="62*">
-
-            </RowDefinition>
-            <RowDefinition Height="118*">
-
-            </RowDefinition>
-            <RowDefinition Height="150*">
-
-            </RowDefinition>
+            <RowDefinition Height="62*"/>
+            <RowDefinition Height="118*"/>
+            <RowDefinition Height="150*"/>
         </Grid.RowDefinitions>
-        <Image Grid.Column="1" Source="/Resources/key.png" RenderTransformOrigin="-0.725,0.512" HorizontalAlignment="Center" VerticalAlignment="Center" Height="210" Width="210"/>
 
-        <TextBlock Grid.Column="1" Grid.Row="1" Text="Логин" FontSize="22" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Height="29" Width="65"/>
+        <TextBlock Grid.Column="1" Grid.Row="1" FontSize="22" FontWeight="Bold" 
+                  HorizontalAlignment="Center" VerticalAlignment="Center" Height="29" Width="115"><Run Language="ru-ru" Text="ЛОГИННН"/></TextBlock>
 
-        <TextBox  x:Name="tbxlogin" Grid.Column="1" Grid.Row="2" Margin="10,34,10,34" FontSize="16" FontWeight="Bold"/>
+        <!-- TextBox с закругленными углами для логина -->
+        <Grid Grid.Column="1" Grid.Row="2" Margin="10,34,10,34">
+            <Border CornerRadius="10" Background="White" BorderThickness="1" BorderBrush="Gray">
+                <TextBox x:Name="tbxlogin" FontSize="16" FontWeight="Bold" 
+                        BorderThickness="0" Background="Transparent"
+                        Padding="10,5"/>
+            </Border>
+        </Grid>
 
-        <TextBlock Grid.Column="1" Grid.Row="3" Text="Пароль" FontSize="22" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" Width="81"/>
+        <TextBlock Grid.Column="1" Grid.Row="3" FontSize="22" FontWeight="Bold" 
+                  HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" Width="120"><Run Language="ru-ru" Text="ПАРОЛЬЬЬ"/></TextBlock>
 
-        <TextBox x:Name="tbxPass" Grid.Column="1" Grid.Row="4" Margin="10,32,10,32" FontWeight="Bold" FontSize="16"/>
+        <!-- TextBox с закругленными углами для пароля -->
+        <Grid Grid.Column="1" Grid.Row="4" Margin="10,32,10,32">
+            <Border CornerRadius="10" Background="White" BorderThickness="1" BorderBrush="Gray">
+                <TextBox x:Name="tbxPass" FontWeight="Bold" FontSize="16" 
+                        BorderThickness="0" Background="Transparent"
+                        Padding="10,5"/>
+            </Border>
+        </Grid>
 
-        <Button x:Name="btnOpen" Grid.Column="1" Grid.Row="5" Content="Вход" FontWeight="Bold" FontSize="24" Margin="10,41,10,40" Background="White" BorderThickness="2,2,2,2" Click="btnOpen_Click">
+        <Button x:Name="btnOpen" Grid.Column="1" Grid.Row="5" Content="вход" FontWeight="Bold" 
+               FontSize="24" Margin="10,41,10,40" Background="White" BorderThickness="2,2,2,2" Click="btnOpen_Click">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="BorderBrush" Value="Blue"/>
@@ -56,5 +60,6 @@
                 </Style>
             </Button.Style>
         </Button>
+        <Image Grid.Column="1" Margin="83,13,74,13" Source="/Resources/928476e75fa831c4e2c2b3064298121b.jpg" Stretch="Fill"/>
     </Grid>
 </Window>

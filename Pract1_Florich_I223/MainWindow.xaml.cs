@@ -9,12 +9,12 @@ namespace Pract1_Florich_I223
 {
     public partial class MainWindow : Window
     {
-        private ShopDBEntities3 dbContext;
+        private ShopDBEntities5 dbContext;
 
         public MainWindow()
         {
             InitializeComponent();
-            dbContext = new ShopDBEntities3();
+            dbContext = new ShopDBEntities5();
             LoadProducts();
         }
 
