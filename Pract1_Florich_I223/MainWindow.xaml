@@ -5,61 +5,104 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Pract1_Florich_I223"
         mc:Ignorable="d"
-        Title="MainWindow" Height="800" Width="500">
-    <Grid Background="#FFEAABA8">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="27*"/>
-            <ColumnDefinition Width="146*"/>
-            <ColumnDefinition Width="27*"/>
-        </Grid.ColumnDefinitions>
+        Title="Главная форма"
+        Height="800"
+        Width="500"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="92"/>
+            <RowDefinition Height="37"/>
+            <RowDefinition Height="84"/>
+            <RowDefinition Height="37"/>
+            <RowDefinition Height="84"/>
+            <RowDefinition Height="37"/>
+            <RowDefinition Height="300"/>
+            <RowDefinition Height="84"/>
+            <RowDefinition Height="209"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <Button Click="AddProductButton_Click" x:Name="AddProductButton" Content="Добавить продукт" FontFamily="Verdana" FontSize="15" FontStyle="Italic" FontWeight="Bold" Margin="80,31,2,31" Foreground="Black" BorderBrush="#FF5F0202" Grid.Row="5" Grid.Column="1">
-            <Button.Background>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="#FFFF5050" Offset="0.783"/>
-                    <GradientStop Color="#FF7D44FF"/>
-                    <GradientStop Color="#FF00CAFF"/>
-                    <GradientStop Color="#FFC54141" Offset="0.54"/>
-                    <GradientStop Color="#FFFFCBC2"/>
-                </LinearGradientBrush>
-            </Button.Background>
-        </Button>
+        <TextBlock Grid.Row="0" TextAlignment="Center" FontSize="35" FontWeight="Bold" Margin="0,20,0,20"><Run Text="ДОБАВЛЕНИ"/><Run Language="ru-ru" Text="Е"/><Run Text=" ЗАПИСЕЙ"/></TextBlock>
 
-        <TextBox x:Name="ProductNameTextBox" Margin="0,38,0,37" Text="" Grid.Column="1" Grid.Row="1" FontFamily="Verdana" FontSize="20" Height="55"/>
-        <TextBox x:Name="ProductPriceTextBox" Margin="0,38,2,38" Text="" Grid.Column="1" Grid.Row="2" FontFamily="Verdana" FontSize="20" Height="55"/>
-        <TextBox x:Name="ProductDescriptionTextBox" Margin="0,38,2,38" Text="" Grid.Column="1" Grid.Row="3" FontFamily="Verdana" FontSize="20" Height="55"/>
+        <TextBlock FontSize="22" FontWeight="Bold"
+        HorizontalAlignment="Center" VerticalAlignment="Center" Height="29" Width="210" Grid.Row="1" TextAlignment="Center">
+            <Run Language="ru-ru" Text="НАЗВАНИЕ"/>
+        </TextBlock>
 
-        <ListBox x:Name="ProductsDataGrid" Margin="67,10,2,10" Grid.Row="4" FontFamily="Verdana" FontSize="16" Background="#FFF1F1F1" Grid.ColumnSpan="2">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel>
-                        <TextBlock Text="{Binding ProductName}" FontWeight="Bold" />
-                        <TextBlock Text="{Binding Price, StringFormat={}{0:N2} ₽}" Foreground="Gray" />
-                        <TextBlock Text="{Binding Description}" Foreground="Gray" />
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
-        <Button Grid.Column="1" Click="BackButton_Click" x:Name="BackButton" Content="&lt;" FontFamily="Verdana" FontSize="15" FontStyle="Italic" FontWeight="Bold" Margin="0,31,302,31" Foreground="Black" BorderBrush="#FF5F0202" Grid.Row="5">
-            <Button.Background>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="#FFFF5050" Offset="0.783"/>
-                    <GradientStop Color="#FF7D44FF"/>
-                    <GradientStop Color="#FF00CAFF"/>
-                    <GradientStop Color="#FFC54141" Offset="0.54"/>
-                    <GradientStop Color="#FFFFCBC2"/>
-                </LinearGradientBrush>
-            </Button.Background>
-        </Button>
-        <TextBlock Grid.Column="1" FontSize="26" FontWeight="Bold" 
-            HorizontalAlignment="Center" VerticalAlignment="Center" Height="111" Width="361" TextAlignment="Center"><Run Text="ФОРМА "/><LineBreak/><Run Text="ДОБА"/><Run Text="ВЛЕНИЯ "/><LineBreak/><Run Text="ЗАПИСЕЙ"/></TextBlock>
+        <TextBlock FontSize="22" FontWeight="Bold"
+        HorizontalAlignment="Center" VerticalAlignment="Center" Height="29" Width="210" Grid.Row="3" TextAlignment="Center">
+            <Run Language="ru-ru" Text="ЦЕНА"/>
+        </TextBlock>
+
+        <TextBlock FontSize="22" FontWeight="Bold"
+HorizontalAlignment="Center" VerticalAlignment="Center" Height="29" Width="210" Grid.Row="5" TextAlignment="Center">
+    <Run Language="ru-ru" Text="ОПИСАНИЕ"/>
+        </TextBlock>
+
+        <!-- Название -->
+        <Grid Grid.Row="2" Margin="30,10,30,10">
+            <Border CornerRadius="10" Background="White" BorderThickness="1" BorderBrush="Gray">
+                <TextBox x:Name="ProductNameTextBox"
+                         FontSize="18" FontWeight="Bold" 
+                         BorderThickness="0" Background="Transparent"
+                         Padding="10,5"/>
+            </Border>
+        </Grid>
+
+        <!-- Цена -->
+        <Grid Grid.Row="4" Margin="30,10,30,10">
+            <Border CornerRadius="10" Background="White" BorderThickness="1" BorderBrush="Gray">
+                <TextBox x:Name="ProductPriceTextBox"
+                         FontSize="18" FontWeight="Bold"
+                         BorderThickness="0" Background="Transparent"
+                         Padding="10,5"/>
+            </Border>
+        </Grid>
+
+        <!-- Описание -->
+        <Grid Grid.Row="6" Margin="30,10,30,10">
+            <Border CornerRadius="10" Background="White" BorderThickness="1" BorderBrush="Gray">
+                <TextBox x:Name="ProductDescriptionTextBox"
+                         FontSize="18" FontWeight="Bold"
+                         BorderThickness="0" Background="Transparent"
+                         Padding="10,5"
+                         TextWrapping="Wrap"
+                         AcceptsReturn="True" Margin="0,-1,0,-1"/>
+            </Border>
+        </Grid>
+
+        <!-- Кнопки -->
+        <StackPanel Grid.Row="7" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,10" Width="250">
+            <Button x:Name="AddProductButton" Content="Сохранить" FontSize="20" FontWeight="Bold" Padding="20,5" Click="AddProductButton_Click">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="BorderBrush" Value="Blue"/>
+                        <Setter Property="BorderThickness" Value="2"/>
+                        <Setter Property="Background" Value="White"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="BorderBrush" Value="BlueViolet"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+
+            <Button x:Name="BackButton" Content="Назад" FontSize="20" FontWeight="Bold" Padding="20,5" Click="BackButton_Click">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="BorderBrush" Value="Blue"/>
+                        <Setter Property="BorderThickness" Value="2"/>
+                        <Setter Property="Background" Value="White"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="BorderBrush" Value="BlueViolet"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+        </StackPanel>
     </Grid>
 </Window>

@@ -71,8 +71,8 @@
                 <TextBox x:Name="DescriptionTextBox" FontSize="16" FontWeight="Bold"
                          BorderThickness="0" Background="Transparent"
                          Padding="10,5"
-                         TextWrapping="Wrap" AcceptsReturn="True" Height="100"
-                         Text="{Binding CurrentProduct.Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                         TextWrapping="Wrap" AcceptsReturn="True"
+                         Text="{Binding CurrentProduct.Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="0,-1,0,-1"/>
             </Border>
         </Grid>
 

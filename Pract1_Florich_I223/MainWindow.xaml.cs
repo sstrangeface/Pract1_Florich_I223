@@ -15,13 +15,8 @@ namespace Pract1_Florich_I223
         {
             InitializeComponent();
             dbContext = new ShopDBEntities5();
-            LoadProducts();
         }
 
-        private void LoadProducts()
-        {
-            ProductsDataGrid.ItemsSource = dbContext.Products.ToList();
-        }
 
         private void AddProductButton_Click(object sender, RoutedEventArgs e)
         {
@@ -52,10 +47,6 @@ namespace Pract1_Florich_I223
                 dbContext.Products.Add(newProduct);
                 dbContext.SaveChanges();
 
-                LoadProducts(); // Обновляем ListBox
-                ProductNameTextBox.Clear();
-                ProductPriceTextBox.Clear();
-                ProductDescriptionTextBox.Clear();
             }
             catch (Exception ex)
             {
