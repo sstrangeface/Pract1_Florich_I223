@@ -1,29 +1,27 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Windows;
-using System.Windows.Controls;
-using Pract1_Florich_I223.DBmodel;
+using Yagnov_I212.DBmodel;
 
-namespace Pract1_Florich_I223
+namespace Yagnov_I212
 {
     public partial class MainWindow : Window
     {
-        private ShopDBEntities5 dbContext;
+        private readonly ShopDBEntities5 dbContext;
+        private readonly Users _currentUser;
 
-        public MainWindow()
+        public MainWindow(Users user)
         {
             InitializeComponent();
             dbContext = new ShopDBEntities5();
+            _currentUser = user;
         }
-
 
         private void AddProductButton_Click(object sender, RoutedEventArgs e)
         {
             try
             {
                 string productName = ProductNameTextBox.Text;
-                if (string.IsNullOrEmpty(productName))
+                if (string.IsNullOrWhiteSpace(productName))
                 {
                     MessageBox.Show("Введите название товара.");
                     return;
@@ -47,6 +45,12 @@ namespace Pract1_Florich_I223
                 dbContext.Products.Add(newProduct);
                 dbContext.SaveChanges();
 
+                MessageBox.Show("Товар успешно добавлен.");
+
+                // Очистка полей после добавления
+                ProductNameTextBox.Clear();
+                ProductPriceTextBox.Clear();
+                ProductDescriptionTextBox.Clear();
             }
             catch (Exception ex)
             {
@@ -56,19 +60,14 @@ namespace Pract1_Florich_I223
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            // Создаем экземпляр окна DataGrid
-                DataGrid dataGridWindow = new DataGrid();
-
-                // Открываем окно DataGrid
-                dataGridWindow.Show();
-
-                // Закрываем текущее окно AuthWindow
-                this.Close();
+            // Возврат к списку товаров, передаём текущего пользователя обратно
+            DataGrid dataGridWindow = new DataGrid(_currentUser);
+            dataGridWindow.Show();
+            this.Close();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            // Логика для кнопки "Авторизация"
             MessageBox.Show("Авторизация");
         }
     }

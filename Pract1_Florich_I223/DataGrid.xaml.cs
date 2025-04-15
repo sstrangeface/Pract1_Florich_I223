@@ -2,35 +2,36 @@
 using System.IO;
 using System.Linq;
 using System.Windows;
-using Pract1_Florich_I223.DBmodel;
+using Yagnov_I212.DBmodel;
 
-namespace Pract1_Florich_I223
+namespace Yagnov_I212
 {
     public partial class DataGrid : Window
     {
-        // Контекст базы данных
-        private ShopDBEntities5 _dbContext;
+        private readonly ShopDBEntities5 _dbContext;
+        private readonly Users _currentUser;
 
-        public DataGrid()
+        public DataGrid(Users user)
         {
             InitializeComponent();
-
-            // Инициализация контекста базы данных
             _dbContext = new ShopDBEntities5();
+            _currentUser = user;
 
-            // Загрузка данных из таблицы Products
             LoadProducts();
+
+            if (_currentUser.Roles.RoleName == "Manager")
+            {
+                AddButton.IsEnabled = false;
+                EditButton.IsEnabled = false;
+                DelButton.IsEnabled = false;
+            }
         }
 
-        // Метод для загрузки данных из таблицы Products
         private void LoadProducts()
         {
             try
             {
-                // Получаем данные из таблицы Products
                 var products = _dbContext.Products.ToList();
-
-                // Привязываем данные к DataGrid
                 ProductsDataGrid.ItemsSource = products;
             }
             catch (Exception ex)
@@ -39,10 +40,10 @@ namespace Pract1_Florich_I223
             }
         }
 
-        // Обработчик кнопки ДОБАВИТЬ
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow mainWindow = new MainWindow();
+            // Передаём пользователя в MainWindow
+            MainWindow mainWindow = new MainWindow(_currentUser);
             mainWindow.Show();
             this.Close();
         }
@@ -56,7 +57,6 @@ namespace Pract1_Florich_I223
                 return;
             }
 
-            // Создаем копию товара для редактирования
             var productToEdit = new Products
             {
                 ProductID = selectedProduct.ProductID,
@@ -68,17 +68,15 @@ namespace Pract1_Florich_I223
             var editWindow = new EditWindow(productToEdit, _dbContext);
             if (editWindow.ShowDialog() == true)
             {
-                // Обновляем оригинальный товар, если редактирование успешно
                 selectedProduct.ProductName = productToEdit.ProductName;
                 selectedProduct.Price = productToEdit.Price;
                 selectedProduct.Description = productToEdit.Description;
 
                 _dbContext.SaveChanges();
-                ProductsDataGrid.Items.Refresh(); // Обновляем отображение
+                ProductsDataGrid.Items.Refresh();
             }
         }
 
-        // Обработчик кнопки УДАЛИТЬ
         private void DelButton_Click(object sender, RoutedEventArgs e)
         {
             var selectedProduct = ProductsDataGrid.SelectedItem as Products;
@@ -88,65 +86,49 @@ namespace Pract1_Florich_I223
                 return;
             }
 
-            // Удаление без подтверждения (минимальная версия)
             _dbContext.Products.Remove(selectedProduct);
             _dbContext.SaveChanges();
-            LoadProducts(); // Обновляем список товаров
+            LoadProducts();
         }
 
-        // Обработчик кнопки ЭКСПОРТИРОВАТЬ
         private void ExpButton_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                // Получаем текущую дату для имени файла
                 var time = DateTime.Today.ToShortDateString().Replace('.', '-');
                 string filePath = $"{time}_report.csv";
 
-                // Получаем данные из DataGrid
                 var data = ProductsDataGrid.ItemsSource.Cast<Products>().ToList();
 
-                // Создаем CSV-контент
                 var csvContent = new System.Text.StringBuilder();
-
-                // Добавляем заголовки столбцов с разделителем ";" (Excel лучше его понимает)
                 csvContent.AppendLine("Название;Цена;Описание");
 
-                // Добавляем данные по каждому товару
                 foreach (var item in data)
                 {
-                    // Экранируем специальные символы и используем точку с запятой как разделитель
                     csvContent.AppendLine(
                         $"\"{item.ProductName?.Replace("\"", "\"\"")}\";" +
                         $"{item.Price.ToString().Replace(",", ".")};" +
                         $"\"{item.Description?.Replace("\"", "\"\"")}\"");
                 }
 
-                // Сохраняем файл с кодировкой UTF-8 с BOM (для корректного отображения в Excel)
                 File.WriteAllText(filePath, csvContent.ToString(), System.Text.Encoding.UTF8);
-
-                // Показываем сообщение об успехе
-                MessageBox.Show($"Данные успешно экспортированы в файл: {Path.GetFullPath(filePath)}",
-                              "Экспорт завершен",
-                              MessageBoxButton.OK,
-                              MessageBoxImage.Information);
+                MessageBox.Show($"Данные экспортированы в файл: {Path.GetFullPath(filePath)}",
+                                "Экспорт завершен",
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Information);
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Ошибка при экспорте: {ex.Message}",
-                              "Ошибка",
-                              MessageBoxButton.OK,
-                              MessageBoxImage.Error);
+                                "Ошибка",
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Error);
             }
         }
 
-        // Обработчик кнопки ВЫХОД
         private void ExitButton_Click(object sender, RoutedEventArgs e)
         {
-            // Закрываем текущее окно
             this.Close();
-
-            // Открываем окно авторизации
             AuthWindow authWindow = new AuthWindow();
             authWindow.Show();
         }

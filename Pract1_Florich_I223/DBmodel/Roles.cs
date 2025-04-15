@@ -12,11 +12,18 @@ namespace Yagnov_I212.DBmodel
     using System;
     using System.Collections.Generic;
     
-    public partial class Products
+    public partial class Roles
     {
-        public int ProductID { get; set; }
-        public string ProductName { get; set; }
-        public decimal Price { get; set; }
-        public string Description { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Roles()
+        {
+            this.Users = new HashSet<Users>();
+        }
+    
+        public int RoleID { get; set; }
+        public string RoleName { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Users> Users { get; set; }
     }
 }

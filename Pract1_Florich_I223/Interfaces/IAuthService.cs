@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Yagnov_I212.DBmodel;
 
-namespace Pract1_Florich_I223.Logic
+namespace Yagnov_I212.Services
 {
     public interface IAuthService
     {
-        bool CheckData(string login, string pass);
+        Users Authenticate(string login, string pass);
     }
 }

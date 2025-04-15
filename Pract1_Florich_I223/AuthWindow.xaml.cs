@@ -1,21 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics.Eventing.Reader;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Yagnov_I212.Services;
+using Yagnov_I212.Logic;
+using Yagnov_I212.DBmodel;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using Pract1_Florich_I223.DBmodel;
-using Pract1_Florich_I223.Logic;
 
-namespace Pract1_Florich_I223
+namespace Yagnov_I212
 {
     public partial class AuthWindow : Window
     {
@@ -25,7 +13,6 @@ namespace Pract1_Florich_I223
         {
             InitializeComponent();
             _authService = new AuthService();
-            ShopDBEntities5  dbContext = new ShopDBEntities5();
         }
 
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
@@ -37,21 +24,24 @@ namespace Pract1_Florich_I223
         {
             string login = tbxlogin.Text;
             string pass = tbxPass.Text;
-                        
-            if (_authService.CheckData(login, pass))
-            {
-                // Создаем экземпляр окна DataGrid
-                DataGrid dataGridWindow = new DataGrid();
 
-                // Открываем окно DataGrid
+            Users user = _authService.Authenticate(login, pass);
+
+            if (user != null)
+            {
+                MessageBox.Show($"Добро пожаловать, {user.Login}!\nВаша роль: {user.Roles.RoleName}",
+                                "Успешная авторизация", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                // Открываем DataGrid и передаём пользователя
+                DataGrid dataGridWindow = new DataGrid(user);
                 dataGridWindow.Show();
 
-                // Закрываем текущее окно AuthWindow
                 this.Close();
             }
             else
             {
-                MessageBox.Show("Ошибка, проверьте правильность введённых данных в полях");
+                MessageBox.Show("Ошибка, проверьте правильность введённых данных",
+                                "Ошибка входа", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
     }

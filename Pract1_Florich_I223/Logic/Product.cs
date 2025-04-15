@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Pract1_Florich_I223
+namespace Yagnov_I212
 {
     public class Product : IProduct
     {

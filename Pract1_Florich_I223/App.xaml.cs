@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace Pract1_Florich_I223
+namespace Yagnov_I212
 {
     /// <summary>
     /// Логика взаимодействия для App.xaml

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Pract1_Florich_I223.DBmodel
+namespace Yagnov_I212.DBmodel
 {
     using System;
     using System.Collections.Generic;
@@ -17,5 +17,8 @@ namespace Pract1_Florich_I223.DBmodel
         public int UserID { get; set; }
         public string Login { get; set; }
         public string Pass { get; set; }
+        public Nullable<int> RoleID { get; set; }
+    
+        public virtual Roles Roles { get; set; }
     }
 }

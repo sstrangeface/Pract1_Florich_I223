@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Windows;
-using Pract1_Florich_I223.DBmodel;
+using Yagnov_I212.DBmodel;
 
-namespace Pract1_Florich_I223
+namespace Yagnov_I212
 {
     public partial class EditWindow : Window
     {

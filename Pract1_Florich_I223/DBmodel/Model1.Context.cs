@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Pract1_Florich_I223.DBmodel
+namespace Yagnov_I212.DBmodel
 {
     using System;
     using System.Data.Entity;
@@ -26,6 +26,7 @@ namespace Pract1_Florich_I223.DBmodel
         }
     
         public virtual DbSet<Products> Products { get; set; }
+        public virtual DbSet<Roles> Roles { get; set; }
         public virtual DbSet<Users> Users { get; set; }
     }
 }
