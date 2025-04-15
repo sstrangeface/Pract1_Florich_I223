@@ -45,8 +45,23 @@
             </Border>
         </Grid>
 
-        <Button x:Name="btnOpen" Grid.Column="1" Grid.Row="5" Content="вход" FontWeight="Bold" 
-               FontSize="24" Margin="10,41,10,40" Background="White" BorderThickness="2,2,2,2" Click="btnOpen_Click">
+        <Button Grid.Column="1" Grid.Row="5" 
+                x:Name="btnOpen"
+                Content="ВХОД"
+                FontWeight="Bold"
+                FontSize="24"
+                Margin="10,41,10,41"
+                Click="btnOpen_Click">
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Border CornerRadius="10" 
+                            BorderBrush="{TemplateBinding BorderBrush}" 
+                            BorderThickness="{TemplateBinding BorderThickness}" 
+                            Background="{TemplateBinding Background}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="BorderBrush" Value="Blue"/>
@@ -60,6 +75,7 @@
                 </Style>
             </Button.Style>
         </Button>
+
         <Image Grid.Column="1" Margin="83,13,74,13" Source="/Resources/928476e75fa831c4e2c2b3064298121b.jpg" Stretch="Fill"/>
     </Grid>
 </Window>
